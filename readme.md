@@ -1,3 +1,20 @@
+# NFT marketplace API server
+> build and run
+```sh
+yarn && yarn start
+```
+> for dev
+```sh
+yarn && yarn dev
+// or
+yarn && yarn inspect
+```
+> test
+```sh
+curl http://localhost:3000/api/main/151
+```
+> or use browser to surf
+
 # mirco [![Build Status](https://travis-ci.org/mingderwang/mirco.svg?branch=master)](https://travis-ci.org/mingderwang/mirco)
 
 > My magnificent microservice
