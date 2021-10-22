@@ -1,4 +1,4 @@
-const { json, send, sendError } = require('micro')
+const { json, send, sendError, buffer, text } = require('micro')
 const micro = require('micro')
 const qs = require('querystring')
 const url = require('url')
@@ -6,8 +6,18 @@ const url = require('url')
 /**
  * handle POST requests
  */
-async function postHandler(request) {
-  console.log('post', request.headers)
+async function postHandler(req) {
+  console.log('post', req.headers)
+  const buf = await buffer(req)
+  console.log(buf)
+  // <Buffer 7b 22 70 72 69 63 65 22 3a 20 39 2e 39 39 7d>
+  const txt = await text(req)
+  console.log(txt)
+  // '{"price": 9.99}'
+  const js = await json(req)
+  console.log(js.price)
+  // 9.99
+  return ''
 }
 /**
  * handle GET requests
@@ -15,7 +25,7 @@ async function postHandler(request) {
 async function getHandler(request) {
   console.log('get', request.headers)
   const query = qs.parse(url.parse(request.url).query)
-  console.log('query parse',query)
+  console.log('query parse', query)
 }
 
 /**
