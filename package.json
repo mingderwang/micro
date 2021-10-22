@@ -6,8 +6,8 @@
   "repository": "mingderwang/mirco",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3001 node index.js",
-    "dev": "PORT=3001 node-dev index.js",
+    "start": "node index.js",
+    "dev": "node-dev index.js",
     "inspect": "node --inspect node_modules/.bin/micro-dev",
     "test": "ava"
   },
