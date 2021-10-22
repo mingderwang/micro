@@ -15,21 +15,13 @@ $ mirco
 
 ## Deployment
 
-This microservice can be deployed to [now](https://zeit.co/now) by Zeit.
-Assuming you've got `now` installed and set up:
-
-```bash
-$ now mingderwang/mirco
+```sh
+vercel
 ```
-
-Alternative, deploy right now without even leaving the browser:
-
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/mingderwang/mirco)
-
 
 ## License
 
-MIT © Ming-der Wang
+MIT ©2021 Ming-der Wang
 
 # rethinkdb 
 ## install and start yoru rethinkdb locally
@@ -62,3 +54,27 @@ node app.js
 ```
 
 > admin or monitoring your rethinkdb on http://localhost:8080
+
+
+# test with ava
+```sh
+yarn test
+```
+
+# test with your initial micro
+```
+curl -X POST  -d '{"text": "Hello!"}' http://localhost:3000
+{"text":"Hello!"}
+```
+index.js
+```'use strict';
+
+const {json} = require('micro');
+
+module.exports = async req => {
+	const body = await json(req);
+
+	// let's echo the text
+	return {text: body.text};
+};
+```

@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "micro",
-    "test": "xo && ava"
+    "test": "ava"
   },
   "engines": {
     "node": ">= 6"
