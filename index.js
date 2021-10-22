@@ -2,7 +2,30 @@ const { json, send, sendError, buffer, text } = require('micro')
 const micro = require('micro')
 const qs = require('querystring')
 const url = require('url')
+const thinkagain = require('thinkagain')(/* rethinkdbdash options */);
 
+let Post = thinkagain.createModel('Post', {
+	type: 'object',
+	properties: {
+	  id: { type: 'string' },
+	  title: { type: 'string' },
+	  content: { type: 'string' },
+	  idAuthor: { type: 'string' }
+	},
+	required: [ 'title' ]
+  });
+
+let Author = thinkagain.createModel('Author', {
+	type: 'object',
+	properties: {
+	  id: { type: 'string' },
+	  name: { type: 'string' }
+	},
+	required: [ 'name' ]
+  });  
+
+// Join the models
+Post.belongsTo(Author, 'author', 'idAuthor', 'id');
 /**
  * handle POST requests
  */
@@ -17,7 +40,19 @@ async function postHandler(req) {
   const js = await json(req)
   console.log(js.price)
   // 9.99
-  return ''
+  // Create a new author
+  var author = new Author({
+	name: 'Ming'
+  });
+  let post = new Post({
+	title: 'Hello Ming!',
+	content: 'This is another example.'
+  });
+  post.author = author;
+
+  post.saveAll()
+  .then(result => console.log(result));
+  return result
 }
 /**
  * handle GET requests
