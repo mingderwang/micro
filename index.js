@@ -3,6 +3,17 @@ const micro = require('micro')
 const qs = require('querystring')
 const url = require('url')
 const thinkagain = require('thinkagain')(/* rethinkdbdash options */)
+const { request } = require('graphql-request')
+const etherspot_endpoint = 'https://etherspot.pillarproject.io/'
+
+// Prepare simple query
+const query = `
+ query {
+	blockStats {
+	  currentBlockNumber
+	}
+  }
+`
 
 const Post = thinkagain.createModel('Post', {
   type: 'object',
@@ -64,10 +75,15 @@ async function postHandler(req) {
  * handle GET requests
  */
 async function getHandler(req) {
+  const data = await request(etherspot_endpoint, query, { title: 'Inception' })
+
+  // Return Movie
+  console.log('graphql data', data)
+
   const payload = await json(req)
   console.log('payload', payload)
-  const query = qs.parse(url.parse(req.url).query)
-  console.log('query', query)
+  const query2 = qs.parse(url.parse(req.url).query)
+  console.log('query', query2)
   Post.get('6a1be0aa-f7b5-47f5-a954-90824691f227')
     .getJoin()
     .run()

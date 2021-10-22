@@ -21,6 +21,8 @@
   "bin": "cli.js",
   "main": "index.js",
   "dependencies": {
+    "graphql": "^15.6.1",
+    "graphql-request": "^3.6.1",
     "micro": "9.3.4",
     "micro-post": "^2.2.0",
     "micro-query": "^0.3.0",
