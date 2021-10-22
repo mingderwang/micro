@@ -1,19 +1,28 @@
-# NFT marketplace API server
-> build and run
-```sh
-yarn && yarn start
+# test rethinkdb only
 ```
-> for dev
-```sh
-yarn && yarn dev
-// or
-yarn && yarn inspect
+node app.js
 ```
-> test
-```sh
-curl http://localhost:3000/api/main/151
+
+# test thinkagain
 ```
-> or use browser to surf
+node app2.js
+```
+
+# test rethinkdb + micro
+```
+export PORT=3000
+yarn
+yarn start
+```
+> test with curl
+```
+curl -X POST -d '{"price":9.9}' http://localhost:3000/
+```
+or
+```
+curl -X GET http://localhost:3000/
+```
+
 
 # mirco [![Build Status](https://travis-ci.org/mingderwang/mirco.svg?branch=master)](https://travis-ci.org/mingderwang/mirco)
 

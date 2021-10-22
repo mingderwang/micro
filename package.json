@@ -6,8 +6,8 @@
   "repository": "mingderwang/mirco",
   "license": "MIT",
   "scripts": {
-    "start": "micro",
-    "dev": "micro-dev",
+    "start": "node index.js",
+    "dev": "node-dev index.js",
     "inspect": "node --inspect node_modules/.bin/micro-dev",
     "test": "ava"
   },
