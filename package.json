@@ -21,6 +21,7 @@
   "dependencies": {
     "micro": "^7.0.0",
     "rethinkdb": "^2.4.2",
+    "thinkagain": "^0.1.6",
     "update-notifier": "^1.0.3"
   },
   "devDependencies": {
