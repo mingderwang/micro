@@ -2129,6 +2129,11 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
+fs-router@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/fs-router/-/fs-router-0.5.0.tgz#763c4c172d76bea9b17e783050fab374370cb0b5"
+  integrity sha512-4IDy5/SuI82die6ynH0eQo78NShQ/O3UujmP+mbvIm/RNvAvfRTbLSBdHiFcRH81+OhEt6eiMwgufwDWipSOvA==
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -3623,6 +3628,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+native-or-bluebird@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/native-or-bluebird/-/native-or-bluebird-1.2.0.tgz#39c47bfd7825d1fb9ffad32210ae25daadf101c9"
+  integrity sha1-OcR7/Xgl0fuf+tMiEK4l2q3xAck=
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -4967,6 +4977,13 @@ the-argv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/the-argv/-/the-argv-1.0.0.tgz#0084705005730dd84db755253c931ae398db9522"
   integrity sha1-AIRwUAVzDdhNt1UlPJMa45jblSI=
+
+then-sleep@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/then-sleep/-/then-sleep-1.0.1.tgz#759823bdc4de56ba2a20812868eb872a803ed1f9"
+  integrity sha1-dZgjvcTeVroqIIEoaOuHKoA+0fk=
+  dependencies:
+    native-or-bluebird "^1.2.0"
 
 thinkagain@^0.1.6:
   version "0.1.6"

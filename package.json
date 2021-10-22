@@ -6,8 +6,8 @@
   "repository": "mingderwang/mirco",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=3001 node index.js",
-    "dev": "PORT=3001 node-dev index.js",
+    "start": "micro",
+    "dev": "micro -dev",
     "inspect": "node --inspect node_modules/.bin/micro-dev",
     "test": "ava"
   },
@@ -21,6 +21,7 @@
   "bin": "cli.js",
   "main": "index.js",
   "dependencies": {
+    "fs-router": "^0.5.0",
     "graphql": "^15.6.1",
     "graphql-request": "^3.6.1",
     "micro": "9.3.4",
@@ -28,6 +29,7 @@
     "micro-query": "^0.3.0",
     "querystring": "^0.2.1",
     "rethinkdb": "^2.4.2",
+    "then-sleep": "^1.0.1",
     "thinkagain": "^0.1.6",
     "update-notifier": "^1.0.3",
     "url": "^0.11.0",
