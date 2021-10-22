@@ -4,7 +4,7 @@ const qs = require('querystring')
 const url = require('url')
 const thinkagain = require('thinkagain')(/* rethinkdbdash options */);
 
-let Post = thinkagain.createModel('Post', {
+const Post = thinkagain.createModel('Post', {
 	type: 'object',
 	properties: {
 	  id: { type: 'string' },
@@ -15,7 +15,7 @@ let Post = thinkagain.createModel('Post', {
 	required: [ 'title' ]
   });
 
-let Author = thinkagain.createModel('Author', {
+const Author = thinkagain.createModel('Author', {
 	type: 'object',
 	properties: {
 	  id: { type: 'string' },
@@ -61,6 +61,8 @@ async function getHandler(request) {
   console.log('get', request.headers)
   const query = qs.parse(url.parse(request.url).query)
   console.log('query parse', query)
+  Post.get("6a1be0aa-f7b5-47f5-a954-90824691f227").getJoin().run()
+  .then(console.log)
 }
 
 /**
