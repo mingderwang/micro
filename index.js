@@ -14,6 +14,16 @@ const query = `
 	}
   }
 `
+const Model = thinkagain.createModel('Model', {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    array: {
+      type: 'array',
+      items: { $ref: 'date' },
+    },
+  },
+})
 
 const Post = thinkagain.createModel('Post', {
   type: 'object',
@@ -69,6 +79,13 @@ async function postHandler(req) {
   post.author = author
 
   post.saveAll().then((result) => console.log(result))
+
+  let t = new Model({
+    id: 'asdfasdf',
+    array: [new Date().toISOString(), new Date().toISOString()],
+  })
+  t.save().then((result) => console.log(result))
+
   return ''
 }
 /**
