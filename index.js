@@ -2,30 +2,37 @@ const { json, send, sendError, buffer, text } = require('micro')
 const micro = require('micro')
 const qs = require('querystring')
 const url = require('url')
-const thinkagain = require('thinkagain')(/* rethinkdbdash options */);
+const thinkagain = require('thinkagain')(/* rethinkdbdash options */)
 
 const Post = thinkagain.createModel('Post', {
-	type: 'object',
-	properties: {
-	  id: { type: 'string' },
-	  title: { type: 'string' },
-	  content: { type: 'string' },
-	  idAuthor: { type: 'string' }
-	},
-	required: [ 'title' ]
-  });
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    title: { type: 'string' },
+    content: { type: 'string' },
+    idAuthor: { type: 'string' },
+  },
+  required: ['title'],
+})
+
+const Attribute = thinkagain.createModel('Attribute', {
+  type: 'array',
+  items: {
+    type: 'number',
+  },
+})
 
 const Author = thinkagain.createModel('Author', {
-	type: 'object',
-	properties: {
-	  id: { type: 'string' },
-	  name: { type: 'string' }
-	},
-	required: [ 'name' ]
-  });  
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    name: { type: 'string' },
+  },
+  required: ['name'],
+})
 
 // Join the models
-Post.belongsTo(Author, 'author', 'idAuthor', 'id');
+Post.belongsTo(Author, 'author', 'idAuthor', 'id')
 /**
  * handle POST requests
  */
@@ -42,27 +49,29 @@ async function postHandler(req) {
   // 9.99
   // Create a new author
   var author = new Author({
-	name: 'Ming'
-  });
+    name: 'Ming',
+  })
   let post = new Post({
-	title: 'Hello Ming!',
-	content: 'This is another example.'
-  });
-  post.author = author;
+    title: 'Hello Ming!',
+    content: 'This is another example.',
+  })
+  post.author = author
 
-  post.saveAll()
-  .then(result => console.log(result));
-  return result
+  post.saveAll().then((result) => console.log(result))
+  return ''
 }
 /**
  * handle GET requests
  */
-async function getHandler(request) {
-  console.log('get', request.headers)
-  const query = qs.parse(url.parse(request.url).query)
-  console.log('query parse', query)
-  Post.get("6a1be0aa-f7b5-47f5-a954-90824691f227").getJoin().run()
-  .then(console.log)
+async function getHandler(req) {
+  const payload = await json(req)
+  console.log('payload', payload)
+  const query = qs.parse(url.parse(req.url).query)
+  console.log('query', query)
+  Post.get('6a1be0aa-f7b5-47f5-a954-90824691f227')
+    .getJoin()
+    .run()
+    .then(console.log)
 }
 
 /**
