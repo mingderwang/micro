@@ -1,7 +1,11 @@
 const { send } = require('micro')
+const fetch = require('node-fetch');
 
 // respond to specific methods by exposing their verbs
 module.exports.GET = async function(req, res) {
-  // fs-router decorates your req object with param and query hashes
-  send(res, 200, { params: req.params, query: req.query })
+  const id = req.params.param
+  console.log('id', id)
+  const response = await fetch(`https://api.dontbuymeme.com/memes/${id}`);
+	const json = await response.json();
+  return json
 }
