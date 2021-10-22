@@ -6,8 +6,8 @@
   "repository": "mingderwang/mirco",
   "license": "MIT",
   "scripts": {
-    "start": "micro",
-    "dev": "micro-dev",
+    "start": "PORT=3001 node index.js",
+    "dev": "PORT=3001 node-dev index.js",
     "inspect": "node --inspect node_modules/.bin/micro-dev",
     "test": "ava"
   },
@@ -24,15 +24,18 @@
     "micro": "9.3.4",
     "micro-post": "^2.2.0",
     "micro-query": "^0.3.0",
+    "querystring": "^0.2.1",
     "rethinkdb": "^2.4.2",
     "thinkagain": "^0.1.6",
-    "update-notifier": "^1.0.3"
+    "update-notifier": "^1.0.3",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "async-to-gen": "^1.3.2",
     "ava": "^0.18.1",
     "got": "^6.7.1",
     "micro-dev": "^3.0.0",
+    "node-dev": "^7.0.0",
     "test-listen": "^1.0.1",
     "xo": "^0.17.1"
   }
