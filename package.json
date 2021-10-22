@@ -1,6 +1,6 @@
 {
   "name": "mirco",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NFT marketplace API server",
   "author": "Ming-der Wang <mingderwang@gmail.com>",
   "repository": "mingderwang/mirco",
